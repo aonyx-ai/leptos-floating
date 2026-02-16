@@ -1,0 +1,24 @@
+[package]
+name = "leptos-floating"
+version = "0.0.0"
+edition = "2024"
+rust-version = "1.88"
+description = "Floating UI primitives for Leptos"
+license = "Apache-2.0 OR MIT"
+repository = "https://github.com/aonyx-ai/leptos-floating"
+
+[dependencies]
+leptos = ">=0.8.3"
+web-sys = { version = "0.3.80", features = ["DomRect", "Element"] }
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3.0"
+web-sys = { version = "0.3.80", features = [
+    "Document",
+    "HtmlButtonElement",
+    "HtmlDivElement",
+    "HtmlElement",
+    "CssStyleDeclaration",
+    "Window",
+    "Node",
+] }
