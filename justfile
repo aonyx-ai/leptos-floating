@@ -75,6 +75,10 @@ lint-yaml:
 prettier fix="false" extension="*":
     prettier {{ if fix == "true" { "--write" } else { "--list-different" } }} --ignore-unknown "**/*.{{ extension }}"
 
+# Publish the crate to crates.io
+publish:
+    cargo publish -v --all-features
+
 # Run the tests
 test-rust:
     cargo test --all-features --all-targets
