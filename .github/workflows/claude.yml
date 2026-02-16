@@ -2,6 +2,10 @@
 name: Claude Code
 permissions: {}
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.issue.number || github.event.pull_request.number }}
+  cancel-in-progress: true
+
 "on":
   issue_comment:
     types: [created]
@@ -21,16 +25,16 @@ jobs:
       (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude') || contains(github.event.issue.title, '@claude')) && !contains(github.event.issue.body, '@claude review') && !contains(github.event.issue.title, '@claude review'))
     runs-on: warp-ubuntu-latest-x64-2x
     permissions:
-      contents: read
-      pull-requests: read
-      issues: read
-      id-token: write
+      contents: read # Checkout repository
+      pull-requests: read # Read PR details
+      issues: read # Read issue/comment context
+      id-token: write # Required for Claude Code OIDC authentication
       actions: read # Required for Claude to read CI results on PRs
     name: Claude
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # 6.0.2
         with:
           fetch-depth: 1
           persist-credentials: true

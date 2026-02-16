@@ -7,6 +7,10 @@ name: Continuous Integration
 
 permissions: {}
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   targets:
     name: Enumerate Just recipes
@@ -38,7 +42,7 @@ jobs:
     runs-on: warp-ubuntu-latest-x64-2x
 
     permissions:
-      packages: write
+      packages: write # Required for Flox cache
       contents: read
 
     needs: targets

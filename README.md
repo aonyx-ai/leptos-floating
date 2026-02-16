@@ -52,12 +52,12 @@ element changes.
 
 ### `FloatingOptions`
 
-| Field          | Type    | Default         | Description                          |
-| -------------- | ------- | --------------- | ------------------------------------ |
-| `side`         | `Side`  | `Side::Bottom`  | Which side to place the floating el  |
-| `align`        | `Align` | `Align::Start`  | Alignment along the cross-axis       |
-| `side_offset`  | `f64`   | `0.0`           | Distance from the reference element  |
-| `align_offset` | `f64`   | `0.0`           | Offset along the cross-axis          |
+| Field          | Type    | Default        | Description                         |
+| -------------- | ------- | -------------- | ----------------------------------- |
+| `side`         | `Side`  | `Side::Bottom` | Which side to place the floating el |
+| `align`        | `Align` | `Align::Start` | Alignment along the cross-axis      |
+| `side_offset`  | `f64`   | `0.0`          | Distance from the reference element |
+| `align_offset` | `f64`   | `0.0`          | Offset along the cross-axis         |
 
 ### `Side`
 
