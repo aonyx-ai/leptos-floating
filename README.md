@@ -18,16 +18,17 @@ fn Tooltip() -> impl IntoView {
     let reference_ref = NodeRef::new();
     let floating_ref = NodeRef::new();
 
-    let UseFloatingReturn { x, y, .. } = use_floating(
+    let floating = use_floating(
         reference_ref,
         floating_ref,
-        FloatingOptions {
-            side: Side::Bottom,
-            align: Align::Center,
-            side_offset: 8.0,
-            ..Default::default()
-        },
+        FloatingOptions::builder()
+            .side(Side::Bottom)
+            .align(Align::Center)
+            .side_offset(8.0)
+            .build(),
     );
+    let x = floating.x();
+    let y = floating.y();
 
     view! {
         <button node_ref=reference_ref>"Hover me"</button>
@@ -47,10 +48,14 @@ fn Tooltip() -> impl IntoView {
 
 ### `use_floating`
 
-Returns reactive `x`/`y` signals that update when the reference or floating
-element changes.
+Returns a `UseFloatingReturn` with reactive `x`/`y` signals that update when the
+reference or floating element changes. Read them with the getters `x()`, `y()`,
+`side()`, and `align()`.
 
 ### `FloatingOptions`
+
+Build it with `FloatingOptions::builder()`. Read the fields with getters of the
+same name.
 
 | Field          | Type    | Default        | Description                         |
 | -------------- | ------- | -------------- | ----------------------------------- |
