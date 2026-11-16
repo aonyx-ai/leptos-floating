@@ -8,6 +8,8 @@ license = "Apache-2.0 OR MIT"
 repository = "https://github.com/aonyx-ai/leptos-floating"
 
 [dependencies]
+bon = "3"
+getset = "0.1"
 leptos = ">=0.8.3"
 web-sys = { version = "0.3.80", features = ["DomRect", "Element"] }
 
